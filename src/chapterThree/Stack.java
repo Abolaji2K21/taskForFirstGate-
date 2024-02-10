@@ -2,13 +2,13 @@ package chapterThree;
 
 public class Stack {
     private boolean isEmpty= false;
-    private int[] stackArray = new int[1];
+    private int[] stackArray = new int[5];
 
     private int size = 0;
 
 
     public boolean isEmpty() {
-        return true;
+            return size ==0;
     }
 
     public int CheckSize() {
@@ -17,32 +17,29 @@ public class Stack {
 
     public void push(int num) {
         if (size == stackArray.length) {
-            resize();
+            throw new StackOverflowError("Stack is full and cannot be resized");
         }
         stackArray[size] = num;
         size++;
     }
 
-   public void resize(){
-        int[] newStackArray = new int[stackArray.length * 2];
-
-            for(int copy = 0 ; copy < stackArray.length; copy++){
-                newStackArray[copy] = stackArray[copy];
-
-            }
-                stackArray = newStackArray;
-    }
 
 
     public int popp() {
-        if (isEmpty()) {
+        if (isEmpty())
             throw new ArrayIndexOutOfBoundsException("Stack is empty");
-        }
 
         int poppedElement = stackArray[size - 1];
         size--;
 
         return poppedElement;
+    }
+
+    public int peek() {
+        if (isEmpty())
+            throw new ArrayIndexOutOfBoundsException("Stack is empty");
+
+        return stackArray[size - 1];
     }
 
 }
