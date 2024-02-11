@@ -71,11 +71,11 @@ class ArrayListTest {
 
     @Test
     void testThatWeRemoveElementTwice(){
-        assertTrue(myArrayList.isEmpty());
         myArrayList.add("Moh Baba");
         myArrayList.add("JuMoke");
         int actual1 = myArrayList.checkSize();
         int expected1 = 2;
+        assertTrue(myArrayList.isEmpty());
         assertEquals(expected1, actual1);
         myArrayList.remove("JuMoke");
         myArrayList.remove("Moh Baba");
