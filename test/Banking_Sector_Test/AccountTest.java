@@ -1,7 +1,7 @@
 package Banking_Sector_Test;
 import Banking_Sector.Account;
-import Banking_Sector.InsufficientFundsException;
-import Banking_Sector.InvalidAmountException;
+import Exceptions.InsufficientFundsException;
+import Exceptions.InvalidAmountException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -84,4 +84,5 @@ public class AccountTest {
         assertThrows(InsufficientFundsException.class, () ->my_Account.withdraw(1_200,"2458"));
 
     }
+
 }

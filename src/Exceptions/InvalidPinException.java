@@ -1,4 +1,4 @@
-package Banking_Sector;
+package Exceptions;
 
 public class InvalidPinException extends RuntimeException {
     public InvalidPinException(String message) {

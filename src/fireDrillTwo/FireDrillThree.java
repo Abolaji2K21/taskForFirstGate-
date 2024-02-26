@@ -1,3 +1,5 @@
+package fireDrillTwo;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -77,26 +79,29 @@ public class FireDrillThree {
     }
 
     public String printOnAStraightLine(int[] number){
-        String result = " ";
+        StringBuilder result = new StringBuilder(" ");
 
-        for(int check = 0; check < number.length; check++){
-            result += number[check] + " ";
+        for (int i : number) {
+            result.append(i).append(" ");
 
         }
 
-        return result;
+        return result.toString();
 
     }
 
     public String printOnZigZagLine(int[] number){
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
-        for(int check = 0; check < number.length; check++){
-            result += number[check] + "\n";
+        for (int i : number) {
+            result.append(i).append("\n");
 
         }
-        return result;
+        return result.toString();
     }
+
+
+
 
 
 }

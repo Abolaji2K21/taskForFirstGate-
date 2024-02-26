@@ -1,4 +1,4 @@
-package Banking_Sector;
+package Exceptions;
 
 public class InvalidAccountNumberException extends RuntimeException {
     public InvalidAccountNumberException (String message){

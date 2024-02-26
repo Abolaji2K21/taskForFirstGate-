@@ -1,4 +1,4 @@
-package Banking_Sector;
+package Exceptions;
 
 public class InsufficientFundsException extends RuntimeException {
     public InsufficientFundsException(String message) {

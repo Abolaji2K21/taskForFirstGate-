@@ -1,5 +1,9 @@
 package Banking_Sector;
 
+import Exceptions.InsufficientFundsException;
+import Exceptions.InvalidAmountException;
+import Exceptions.InvalidPinException;
+
 public class Account {
     private int balance;
     private String pin;

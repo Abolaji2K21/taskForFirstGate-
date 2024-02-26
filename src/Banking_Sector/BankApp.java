@@ -1,5 +1,7 @@
 package Banking_Sector;
 
+import Exceptions.InvalidPinException;
+
 public class BankApp {
     private Bank bank;
 

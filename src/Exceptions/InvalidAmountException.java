@@ -1,4 +1,4 @@
-package Banking_Sector;
+package Exceptions;
 
 public class InvalidAmountException extends RuntimeException {
     public InvalidAmountException(String message) {
