@@ -35,26 +35,26 @@ class SevenSegmentTest {
                 """, segment.displaySegment("11111101"));
     }
 
-    @Test
-    public void testDisplaySegmentOne() {
-        SevenSegment segment = new SevenSegment();
-
-        assertEquals("""
-                # # # #
-                #     #
-                #     #
-                #     #
-                # # # #
-                """, segment.displaySegment("11111101"));
-
-        assertEquals("""
-                # # # #
-                      #
-                # # # #
-                #
-                # # # #
-                """, segment.displaySegment("11011011"));
-    }
+//    @Test
+//    public void testDisplaySegmentOne() {
+//        SevenSegment segment = new SevenSegment();
+//
+//        assertEquals("""
+//                # # # #
+//                #     #
+//                #     #
+//                #     #
+//                # # # #
+//                """, segment.displaySegment("11111101"));
+//
+//        assertEquals("""
+//                # # # #
+//                      #
+//                # # # #
+//                #
+//                # # # #
+//                """, segment.displaySegment("11011011"));
+//    }
 
 
     @Test

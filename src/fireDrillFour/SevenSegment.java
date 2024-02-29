@@ -1,5 +1,7 @@
 package fireDrillFour;
 
+import java.util.Scanner;
+
 public class SevenSegment {
 
     private static boolean isOn;
@@ -129,5 +131,29 @@ public class SevenSegment {
     }
     public boolean isOn() {
         return isOn;
+    }
+
+    public static class Main {
+        public static void main(String[] args) {
+            SevenSegment segment = new SevenSegment();
+            Scanner input = new Scanner(System.in);
+
+            while (true) {
+                System.out.print("Enter 8-digit binary number (or 'exit' to quit): ");
+                String userInput = input.nextLine();
+
+                if (userInput.equalsIgnoreCase("exit")) {
+                    break;
+                }
+                try {
+                    String pattern = segment.displaySegment(userInput);
+                    System.out.println("Segment pattern:");
+                    System.out.println(pattern);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid input: ");
+                }
+            }
+
+        }
     }
 }
