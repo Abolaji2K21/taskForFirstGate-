@@ -205,9 +205,18 @@ public class TicTacToeTest {
 
 
     }
+    @Test
+    public void testToEnsureTheGameStateRemainsUnchanged() {
+        User player1 = new User(1, GameType.X);
+        User player2 = new User(2, GameType.O);
+        TicTacToe myGame = new TicTacToe(player1, player2);
 
+        player1.playGame(myGame, 0, 0);
+        player2.playGame(myGame, 1, 0);
+        player1.playGame(myGame, 0, 1);
+        player2.playGame(myGame, 1, 1);
 
+        assertEquals(GameType.EMPTY, myGame.getScoreBoard()[2][2]);
 
-
-
+    }
 }
