@@ -123,4 +123,9 @@ public class TicTacToe {
         }
     }
 
+    public boolean isGameOver() {
+        return winner != null || checkDraw();
+    }
+
+
 }
