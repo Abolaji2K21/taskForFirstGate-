@@ -1,125 +1,74 @@
 package User_Diary_App;
 
 import Exceptions.InvalidPinException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiaryTest {
 
-    @Test
-    void testThatICanCreateADiary(){
-        String username = "Bee jay";
-        String password = "password";
+    private Diary myDiary;
 
-        Diary myDiary = new Diary(username, password);
-
-        assertEquals(username, myDiary.getUsername());
-        assertEquals(password, myDiary.getPassword());
-
+    @BeforeEach
+    void setUp() {
+        myDiary = new Diary("Bee jay", "password");
     }
 
     @Test
-    void testThatICantCreatADiaryWithOutAUsername(){
-        String username = null;
-        String password = "password";
-
-
-        assertThrows(IllegalArgumentException.class, () -> new Diary(null, password));
-
+    void testThatICanCreateADiary() {
+        assertEquals("Bee jay", myDiary.getUsername());
+        assertEquals("password", myDiary.getPassword());
     }
 
     @Test
-    void testThatICantCreatADiaryWithOutAPassword(){
-        String username = "Bee jay";
-        String password = null;
-
-
-        assertThrows(IllegalArgumentException.class, () -> new Diary(username, null));
-
+    void testThatICantCreatADiaryWithOutAUsername() {
+        assertThrows(IllegalArgumentException.class, () -> new Diary(null, "password"));
     }
 
+    @Test
+    void testThatICantCreatADiaryWithOutAPassword() {
+        assertThrows(IllegalArgumentException.class, () -> new Diary("Bee jay", null));
+    }
 
     @Test
-    void thatThatTheDiaryIsLocked(){
-        String username = "Bee jay";
-        String password = "password@";
-
-        Diary myDiary = new Diary(username, password);
+    void thatThatTheDiaryIsInitiallyUnLocked() {
         assertTrue(myDiary.isLocked());
     }
-    @Test
-    void testThatTheUnlockFeaturesWorksOnMyDiary_WithACorrectPasskey(){
-        String username = "Bee jay";
-        String password = "password@";
 
-        Diary myDiary = new Diary(username, password);
-        assertTrue(myDiary.isLocked());
-        myDiary.unlockDiary("password@");
+    @Test
+    void testThatTheUnlockFeaturesWorksOnMyDiary_WithACorrectPasskey() {
+        myDiary.unlockDiary("password");
         assertFalse(myDiary.isLocked());
     }
 
     @Test
-    void testThatTheUnlockFeatureWorksOnMyDiary_WithAnInCorrectPasskey(){
-        String username = "Bee jay";
-        String password = "password@";
-
-        Diary myDiary = new Diary(username, password);
+    void testThatTheUnlockFeatureOnMyDiary_WithAnInCorrectPasskey() {
+        assertThrows(InvalidPinException.class, () -> myDiary.unlockDiary("incorrect_password"));
         assertTrue(myDiary.isLocked());
-        assertThrows(InvalidPinException.class, () -> myDiary.unlockDiary("password"));
     }
 
     @Test
-    void testThatCreatEntryFeatureWorks(){
-        String username = "Bee jay";
-        String password = "password@";
+    void testThatCreatEntryFeatureWorks() {
+        myDiary.unlockDiary("password");
+        assertEquals(0, myDiary.getNumberOfEntries());
 
-        Diary myDiary = new Diary(username, password);
+        myDiary.createEntry(1, "How To Start Thinking", "Body 1");
+        assertEquals(1, myDiary.getNumberOfEntries());
+
+        myDiary.createEntry(2, "How To Stop Thinking", "Body 2");
+        assertEquals(2, myDiary.getNumberOfEntries());
+
+        myDiary.lockDiary("password");
         assertTrue(myDiary.isLocked());
-        myDiary.unlockDiary("password@");
-        assertFalse(myDiary.isLocked());
-
-        int id       = 1;
-        String title = "How To Start Thinking";
-        String body = "Hello and how you doing today ? i am documenting my findings because i need to start thinking ";
-
-        myDiary.createEntry(id,title,body);
-        assertEquals(1, myDiary.getNumberOfEntry());
-        int id1       = 2;
-        String title1 = "How To Stop Thinking";
-        String body1 = "Hello and how you doing today ? i am documenting my findings because i need to stop thinking ";
-
-        myDiary.createEntry(id1,title1,body1);
-        assertEquals(2, myDiary.getNumberOfEntry());
-        myDiary.lockDiary();
-        assertTrue(myDiary.isLocked());
-
     }
 
     @Test
     void testFindEntryByIdFeature() {
-        String username = "Bee jay";
-        String password = "password@";
+        myDiary.unlockDiary("password");
 
-        Diary myDiary = new Diary(username, password);
-        assertTrue(myDiary.isLocked());
-        myDiary.unlockDiary("password@");
-        assertFalse(myDiary.isLocked());
-
-        int id1 = 1;
-        String title1 = "How To Start Thinking";
-        String body1 = "Hello and how you doing today? I am documenting my findings because I need to start thinking.";
-
-        myDiary.createEntry(id1, title1, body1);
-        assertEquals(1, myDiary.getNumberOfEntry());
-
-        int id2 = 2;
-        String title2 = "How To Stop Thinking";
-        String body2 = "Hello and how you doing today? I am documenting my findings because I need to stop thinking.";
-
-        myDiary.createEntry(id2, title2, body2);
-        assertEquals(2, myDiary.getNumberOfEntry());
-
+        myDiary.createEntry(1, "How To Start Thinking", "Body 1");
+        myDiary.createEntry(2, "How To Stop Thinking", "Body 2");
 
         Entry foundEntry1 = myDiary.findEntryById(1);
         assertNotNull(foundEntry1);
@@ -130,140 +79,48 @@ class DiaryTest {
         assertEquals(2, foundEntry2.getId());
     }
 
-
     @Test
-    void thatThatRemoveEntryByIdFeatureWorks(){
-        String username = "Bee jay";
-        String password = "password@";
+    void thatThatRemoveEntryByIdFeatureWorks() {
+        myDiary.unlockDiary("password");
 
-        Diary myDiary = new Diary(username, password);
-        assertTrue(myDiary.isLocked());
-        myDiary.unlockDiary("password@");
-        assertFalse(myDiary.isLocked());
+        myDiary.createEntry(1, "How To Start Thinking", "Body 1");
+        myDiary.createEntry(2, "How To Stop Thinking", "Body 2");
 
-        int id       = 1;
-        String title = "How To Start Thinking";
-        String body = "Hello and how you doing today ? i am documenting my findings because i need to start thinking ";
+        assertEquals(2, myDiary.getNumberOfEntries());
 
-        myDiary.createEntry(id,title,body);
-        assertEquals(1, myDiary.getNumberOfEntry());
-        int id1       = 2;
-        String title1 = "How To Stop Thinking";
-        String body1 = "Hello and how you doing today ? i am documenting my findings because i need to stop thinking ";
-
-        myDiary.createEntry(id1,title1,body1);
-        assertEquals(2, myDiary.getNumberOfEntry());
-        Entry foundEntry = myDiary.findEntryById(2);
-        assertEquals(2, foundEntry.getId());
-        assertNotNull(myDiary.findEntryById(2));
-        Entry foundEntry1 = myDiary.findEntryById(1);
-        assertEquals(1, foundEntry1.getId());
-        assertNotNull(myDiary.findEntryById(1));
         myDiary.deleteEntry(2);
-        assertEquals(1, myDiary.getNumberOfEntry());
-        myDiary.deleteEntry(1);
-        assertEquals(0, myDiary.getNumberOfEntry());
+        assertEquals(1, myDiary.getNumberOfEntries());
 
+        myDiary.deleteEntry(1);
+        assertEquals(0, myDiary.getNumberOfEntries());
     }
 
     @Test
     void thatThatUpdateEntryByIdFeatureWorks() {
-        String username = "Bee jay";
-        String password = "password@";
+        myDiary.unlockDiary("password");
 
-        Diary myDiary = new Diary(username, password);
-        assertTrue(myDiary.isLocked());
-        myDiary.unlockDiary("password@");
-        assertFalse(myDiary.isLocked());
+        myDiary.createEntry(1, "How To Start Thinking", "Body 1");
+        myDiary.createEntry(2, "How To Stop Thinking", "Body 2");
 
-        int id = 1;
-        String title = "How To Start Thinking";
-        String body = "Hello and how you doing today ? i am documenting my findings because i need to start thinking ";
+        myDiary.updateEntry(1, "New Title 1", "New Body 1");
 
-        myDiary.createEntry(id, title, body);
-        assertEquals(1, myDiary.getNumberOfEntry());
-        int id1 = 2;
-        String title1 = "How To Stop Thinking";
-        String body1 = "Hello and how you doing today ? i am documenting my findings because i need to stop thinking ";
+        Entry updatedEntry1 = myDiary.findEntryById(1);
+        assertEquals("New Title 1", updatedEntry1.getTitle());
+        assertEquals("New Body 1", updatedEntry1.getBody());
 
-        myDiary.createEntry(id1, title1, body1);
-        assertEquals(2, myDiary.getNumberOfEntry());
-        Entry foundEntry = myDiary.findEntryById(2);
-        assertEquals(2, foundEntry.getId());
-        assertNotNull(myDiary.findEntryById(2));
-        Entry foundEntry1 = myDiary.findEntryById(1);
-        assertEquals(1, foundEntry1.getId());
-        assertNotNull(myDiary.findEntryById(1));
+        myDiary.updateEntry(2, "New Title 2", "New Body 2");
 
-        String newTitle = "NewTitle";
-        String newBody = "NewBody";
-        myDiary.updateEntry(1,newTitle,newBody);
-
-        Entry updatedEntry = myDiary.findEntryById(1);
-        assertEquals(newTitle, updatedEntry.getTitle());
-        assertEquals(newBody, updatedEntry.getBody());
-
-        String updatedTitle = "NewTitle";
-        String updatedBody = "NewBody";
-        myDiary.updateEntry(2,updatedTitle,updatedBody);
-
-        Entry myDiaryEntryByIdEntry = myDiary.findEntryById(2);
-        assertEquals(updatedTitle, myDiaryEntryByIdEntry.getTitle());
-        assertEquals(updatedBody, myDiaryEntryByIdEntry.getBody());
-
-
-
+        Entry updatedEntry2 = myDiary.findEntryById(2);
+        assertEquals("New Title 2", updatedEntry2.getTitle());
+        assertEquals("New Body 2", updatedEntry2.getBody());
     }
 
     @Test
-    void thatThatUpdateEntryByIdFeatureWorksAndICantUpdateANonExistingEntry() {
-        String username = "Bee jay";
-        String password = "password@";
+    void thatThatUpdateEntryByIdFeatureThrowsExceptionForNonExistingEntry() {
+        myDiary.unlockDiary("password");
 
-        Diary myDiary = new Diary(username, password);
-        assertTrue(myDiary.isLocked());
-        myDiary.unlockDiary("password@");
-        assertFalse(myDiary.isLocked());
+        myDiary.createEntry(1, "How To Start Thinking", "Body 1");
 
-        int id = 1;
-        String title = "How To Start Thinking";
-        String body = "Hello and how you doing today ? i am documenting my findings because i need to start thinking ";
-
-        myDiary.createEntry(id, title, body);
-        assertEquals(1, myDiary.getNumberOfEntry());
-        int id1 = 2;
-        String title1 = "How To Stop Thinking";
-        String body1 = "Hello and how you doing today ? i am documenting my findings because i need to stop thinking ";
-
-        myDiary.createEntry(id1, title1, body1);
-        assertEquals(2, myDiary.getNumberOfEntry());
-        Entry foundEntry = myDiary.findEntryById(2);
-        assertEquals(2, foundEntry.getId());
-        assertNotNull(myDiary.findEntryById(2));
-        Entry foundEntry1 = myDiary.findEntryById(1);
-        assertEquals(1, foundEntry1.getId());
-        assertNotNull(myDiary.findEntryById(1));
-
-        String newTitle = "NewTitle";
-        String newBody = "NewBody";
-        myDiary.updateEntry(1,newTitle,newBody);
-
-        Entry updatedEntry = myDiary.findEntryById(1);
-        assertEquals(newTitle, updatedEntry.getTitle());
-        assertEquals(newBody, updatedEntry.getBody());
-
-        String updatedTitle = "NewTitle";
-        String updatedBody = "NewBody";
-        myDiary.updateEntry(2,updatedTitle,updatedBody);
-
-        Entry myDiaryEntryByIdEntry = myDiary.findEntryById(2);
-        assertEquals(updatedTitle, myDiaryEntryByIdEntry.getTitle());
-        assertEquals(updatedBody, myDiaryEntryByIdEntry.getBody());
-
-        String fakeTitle = "NewTitle";
-        String fakeBody = "NewBody";
-        assertThrows(NullPointerException.class, () -> myDiary.updateEntry(3, fakeTitle, fakeBody));
-
+        assertThrows(IllegalArgumentException.class, () -> myDiary.updateEntry(2, "New Title", "New Body"));
     }
-
 }

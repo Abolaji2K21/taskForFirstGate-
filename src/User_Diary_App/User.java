@@ -14,8 +14,8 @@ public class User {
         diary.unlockDiary(password);
     }
 
-    public void lockDairy(Diary diary, String password){
-        diary.lockDiary();
+    public void lockDiary(Diary diary, String password){
+        diary.lockDiary(password);
     }
     public void updateEntry(Diary diary, int id, String newTitle, String newBody){
         diary.updateEntry(id, newTitle, newBody);
