@@ -11,14 +11,13 @@ public class Account {
     private String firstName;
     private String lastName;
 
-
-    public boolean validatePin(String key) {
-        return pin.equals(key);
-    }
-
     public Account(int accountNumber,String pin){
         this.accountNumber = accountNumber;
         this.pin = pin;
+    }
+
+    public boolean validatePin(String key) {
+        return pin.equals(key);
     }
 
     public int getBalance(String pin){
@@ -30,9 +29,11 @@ public class Account {
 
 
     public void deposit(int amount){
-        if (amount > 0){
-            balance += amount;
+        if (amount <= 0){
+            throw new InvalidAmountException("Invalid deposit amount");
         }
+        balance += amount;
+
     }
 
     public void withdraw(int amount, String pin) {
