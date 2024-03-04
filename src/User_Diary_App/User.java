@@ -20,7 +20,6 @@ public class User {
     public void updateEntry(Diary diary, int id, String newTitle, String newBody){
         diary.updateEntry(id, newTitle, newBody);
     }
-
     public Entry findEntryById(Diary diary, int entryId) {
         return diary.findEntryById(entryId);
     }
