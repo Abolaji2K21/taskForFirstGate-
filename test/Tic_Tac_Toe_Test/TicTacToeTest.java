@@ -23,7 +23,7 @@ public class TicTacToeTest {
     }
 
     @Test
-    public void testToEnsureThatTheGameHasAScoreBoardThatIsInitializedCorrectlyWithAnEmptySomething() {
+    public void testToEnsureThatTheGameHasAScoreBoardThatIsInitializedCorrectlyWithAnEmpty() {
 
         User player1 = new User(1, GameType.X);
         User player2 = new User(2, GameType.O);
