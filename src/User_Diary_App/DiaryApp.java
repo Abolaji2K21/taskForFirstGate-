@@ -30,8 +30,8 @@ public class DiaryApp {
              1 --> Create Diary\s
              2 --> Lock Diary
              3 --> Unlock Diary
-             4 --> Find Entry By Id
-             5 --> Add Entry
+             4 --> Create Entry
+             5 --> Find Entry By Id
              6 --> Update Entry
              7 --> Delete Entry
              8 --> Exit App\s
@@ -41,8 +41,8 @@ public class DiaryApp {
             case '1' -> createDiary();
             case '2' -> lockDiary();
             case '3' -> unlockDiary();
-            case '4' -> findEntryById();
-            case '5' -> createEntry();
+            case '4' -> createEntry();
+            case '5' -> findEntryById();
             case '6' -> updateEntry();
             case '7' -> deleteEntry();
             case '8' -> exitApp();
