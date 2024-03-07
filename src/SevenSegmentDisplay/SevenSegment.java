@@ -24,24 +24,21 @@ public class SevenSegment {
         return """
                #
                #
-               #
-               """;
+               #""";
     }
 
     public String drawVerticalLineOnTheRight() {
         return """
                        #
                        #
-                       #
-               """;
+                       #""";
     }
 
     public String drawVerticalLineOnBothSides() {
         return """
-               #        #
-               #        #
-               #        #
-               """;
+               #     #
+               #     #
+               #     #""";
     }
 
     public String returnVerticalSegments(boolean leftSwitch, boolean rightSwitch) {
@@ -101,7 +98,7 @@ public class SevenSegment {
                     .append("\n")
                     .append(returnVerticalSegments(array[4], array[2]))
                     .append("\n")
-                    .append(array[3]);
+                    .append(returnHorizontalSegments(array[3]));
         }
 
         return display.toString();
@@ -113,5 +110,7 @@ public class SevenSegment {
         String mySegment = "11111111";
 
         System.out.println(segment.displaySevenSegment(mySegment));
+        System.out.println();
+        System.out.println(segment.displaySevenSegment("11001111"));
     }
 }
