@@ -7,17 +7,22 @@ public class Product {
     private double productPrice;
     private String productDesc;
     private ProductCategory productCategory;
+    private boolean isAdmin;
 
 
-    public Product(int productId, String productName, double productPrice, String productDesc, ProductCategory productCategory){
+    public Product(int productId, String productName, double productPrice, String productDesc, ProductCategory productCategory, boolean isAdmin) {
         if(productPrice < 0){
             throw new IllegalArgumentException("Product price cannot be negative");
+        }
+        if(!isAdmin){
+            throw new IllegalArgumentException("Access denied: Only admin can modify product description");
         }
         this.productId = productId;
         this.productCategory = productCategory;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productDesc = productDesc;
+        this.isAdmin = isAdmin;
     }
 
     public int getProductId() {
@@ -39,7 +44,9 @@ public class Product {
     public ProductCategory getProductCategory() {
         return productCategory;
     }
-
+    public boolean isAdmin() {
+        return isAdmin;
+    }
     public void setProductCategory(ProductCategory category) {
         this.productCategory = category;
     }
@@ -51,8 +58,16 @@ public class Product {
         this.productName = product;
     }
     public void setProductPrice(double price){
-        this.productPrice = price;
+        if(isAdmin) {
+            this.productPrice = price;
+        } else {
+            throw new IllegalArgumentException("Access denied: Only admin can modify product description");
+
+        }
     }
+
+
+
 
 
 
