@@ -37,4 +37,5 @@ class AdminTest {
         Seller seller = new Seller(45, "Seller002@gmail.com", "23,semicolon ave", "ok", "password", "08134867544");
         assertThrows(IllegalStateException.class, () -> admin.removeSeller(seller, "Okay1", "password"));
     }
+    
 }
