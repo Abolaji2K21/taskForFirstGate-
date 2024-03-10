@@ -5,16 +5,16 @@ import Exceptions.InvalidLengthException;
 
 public class SevenSegment {
 
-    private boolean isOn = false;
+//    private boolean isOn = false;
     private boolean[] segments;
 
     public SevenSegment() {
         segments = new boolean[8];
     }
 
-    public void toggleDisplay() {
-        isOn = !isOn;
-    }
+//    public void toggleDisplay() {
+//        isOn = !isOn;
+//    }
 
     public String drawHorizontalLine() {
         return "# # # #";
@@ -73,7 +73,7 @@ public class SevenSegment {
         }
     }
 
-    private boolean[] convertStringInput(String input) {
+    public boolean[] convertStringInput(String input) {
         validateInput(input);
         validateLength(input);
 
@@ -87,30 +87,26 @@ public class SevenSegment {
     public String displaySevenSegment(String input) {
         boolean[] array = convertStringInput(input);
 
-        StringBuilder display = new StringBuilder();
-
-        if (array[7]) {
-            display.append(returnHorizontalSegments(array[0]))
-                    .append("\n")
-                    .append(returnVerticalSegments(array[5], array[1]))
-                    .append("\n")
-                    .append(returnHorizontalSegments(array[6]))
-                    .append("\n")
-                    .append(returnVerticalSegments(array[4], array[2]))
-                    .append("\n")
-                    .append(returnHorizontalSegments(array[3]));
+        if (!array[7]) {
+            return "";
         }
 
-        return display.toString();
+        return returnHorizontalSegments(array[0]) + "\n" +
+                returnVerticalSegments(array[5], array[1]) + "\n" +
+                returnHorizontalSegments(array[6]) + "\n" +
+                returnVerticalSegments(array[4], array[2]) + "\n" +
+                returnHorizontalSegments(array[3]);
     }
 
-    public static void main(String[] args) {
-        SevenSegment segment = new SevenSegment();
 
-        String mySegment = "11111111";
 
-        System.out.println(segment.displaySevenSegment(mySegment));
-        System.out.println();
-        System.out.println(segment.displaySevenSegment("11001111"));
-    }
+//    public static void main(String[] args) {
+//        SevenSegment segment = new SevenSegment();
+//
+//        String mySegment = "11111111";
+//
+//        System.out.println(segment.displaySevenSegment(mySegment));
+//        System.out.println();
+//        System.out.println(segment.displaySevenSegment("11001111"));
+//    }
 }
