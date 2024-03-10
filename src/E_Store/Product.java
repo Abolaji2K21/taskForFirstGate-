@@ -54,9 +54,9 @@ public class Product {
     public ProductCategory getProductCategory() {
         return productCategory;
     }
-    public boolean isAdmin() {
-        return isAdmin;
-    }
+//    public boolean isAdmin() {
+//        return isAdmin;
+//    }
     public void setProductCategory(ProductCategory category) {
         if(isAdmin) {
             this.productCategory = category;
@@ -71,9 +71,9 @@ public class Product {
             throw new IllegalArgumentException("Access denied: Only admin can modify product categories");
         }
     }
-    public void setProduct(String product){
-        this.productName = product;
-    }
+//    public void setProduct(String product){
+//        this.productName = product;
+//    }
     public void setProductPrice(double price){
         if(isAdmin) {
             if (price > 0) {
@@ -102,9 +102,9 @@ public class Product {
             throw new IllegalArgumentException("Access denied: Only admin can modify product description");
         }
     }
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
+//    public void setProductId(int productId) {
+//        this.productId = productId;
+//    }
     public double calculateDiscountedPrice(double discountPercentage) {
         if (discountPercentage > 100.0) {
             throw new IllegalArgumentException("discountPercentage cannot be greater than 100");
@@ -115,12 +115,6 @@ public class Product {
         }
     }
 
-    public void updateProduct(String newName, double newPrice, String newDesc, ProductCategory newProductCategory) {
-        productName = newName;
-        productPrice = newPrice;
-        productDesc = newDesc;
-        productCategory = newProductCategory;
-    }
 //    public boolean isAvailable() {
 //        return true;
 //    }
