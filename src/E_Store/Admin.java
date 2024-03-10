@@ -1,61 +1,46 @@
-//package E_Store;
-//
-//import java.util.ArrayList;
-//
-//public class Admin extends User {
-//    private final int adminId;
-//    private final String username;
-//    private final String password;
-//    private boolean locked;
-//    private ArrayList<Seller> mySellers;
-//
-//    public Admin(int adminId, String username, String password) {
-//        this.adminId = adminId;
-//        this.username = username;
-//        this.password = password;
-//        this.mySellers = new ArrayList<>();
-//        this.locked = true;
-//    }
-//
-//    public int getAdminId() {
-//        return adminId;
-//    }
-//
-//    public String getUsername() {
-//        return username;
-//    }
-//
-//    private boolean isLocked() {
-//        return locked;
-//    }
-//    public void addSellers(Seller seller) {
-//        if(validateAdmin(username,password)) {
-//            mySellers.add(seller);
-//        }
-//        else {
-//            throw new IllegalStateException("Admin only");
-//        }
-//
-//    }
-//
-//    public void removeSeller(Seller seller) {
-//        if(validateAdmin(username,password)) {
-//            mySellers.remove(seller);
-//        } else {
-//            throw new IllegalStateException("Admin only");
-//        }
-//    }
-//
-//    public ArrayList<Seller> getMySellers() {
-//        if(validateAdmin(username,password)) {
-//            return mySellers;
-//        } else {
-//            throw new IllegalStateException("Admin only");
-//        }
-//
-//    }
-//    public boolean validateAdmin(String enteredUsername, String enteredPassword) {
-//        return username.equals(enteredUsername) && password.equals(enteredPassword);
-//    }
-//
-//}
+package E_Store;
+
+import java.util.ArrayList;
+
+public class Admin extends User {
+    private final int adminId;
+    private ArrayList<Seller> mySellers;
+
+    public Admin(int adminId, String username, String password) {
+        super(0, "", "", username, password, "");
+        this.adminId = adminId;
+        this.mySellers = new ArrayList<>();
+    }
+
+    public int getAdminId() {
+        return adminId;
+    }
+
+    public void addSeller(Seller seller) {
+        if(validateAdmin()) {
+            mySellers.add(seller);
+        } else {
+            throw new IllegalStateException("Admin only");
+        }
+    }
+
+    public void removeSeller(Seller seller) {
+        if(validateAdmin()) {
+            mySellers.remove(seller);
+        } else {
+            throw new IllegalStateException("Admin only");
+        }
+    }
+
+    public ArrayList<Seller> getMySellers() {
+        if(validateAdmin()) {
+            return mySellers;
+        } else {
+            throw new IllegalStateException("Admin only");
+        }
+    }
+
+    private boolean validateAdmin() {
+        return isLoggedIn();
+    }
+}
