@@ -19,18 +19,18 @@ public class ShoppingCart {
         cartItems.add(new Item(product, quantity));
     }
 
-    public void removeFromCart(Product product, int quantity) {
-        for (Item item : cartItems) {
-            if (item.getProduct().getProductId() == product.getProductId()) {
-                if (item.getQuantity() > quantity) {
-                    item.setQuantity(item.getQuantity() - quantity);
-                } else {
-                    cartItems.remove(item);
-                }
-                return;
-            }
-        }
-    }
+//    public void removeFromCart(Product product, int quantity) {
+//        for (Item item : cartItems) {
+//            if (item.getProduct().getProductId() == product.getProductId()) {
+//                if (item.getQuantity() > quantity) {
+//                    item.setQuantity(item.getQuantity() - quantity);
+//                } else {
+//                    cartItems.remove(item);
+//                }
+//                return;
+//            }
+//        }
+//    }
 
     public void clearCart() {
         cartItems.clear();
