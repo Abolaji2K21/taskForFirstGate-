@@ -43,17 +43,17 @@ public class SevenSegment {
 
     public String returnVerticalSegments(boolean leftSwitch, boolean rightSwitch) {
         if (leftSwitch && rightSwitch) {
-            return drawVerticalLineOnBothSides();
+            return drawVerticalLineOnBothSides() + "\n";
         } else if (!leftSwitch && rightSwitch) {
-            return drawVerticalLineOnTheRight();
+            return drawVerticalLineOnTheRight() + "\n";
         } else {
-            return drawVerticalLineOnTheLeft();
+            return drawVerticalLineOnTheLeft() + "\n";
         }
     }
 
     public String returnHorizontalSegments(boolean topSwitch) {
         if (topSwitch) {
-            return drawHorizontalLine();
+            return drawHorizontalLine() + "\n";
         } else {
             return "";
         }
@@ -91,10 +91,10 @@ public class SevenSegment {
             return "";
         }
 
-        return returnHorizontalSegments(array[0]) + "\n" +
-                returnVerticalSegments(array[5], array[1]) + "\n" +
-                returnHorizontalSegments(array[6]) + "\n" +
-                returnVerticalSegments(array[4], array[2]) + "\n" +
+        return returnHorizontalSegments(array[0]) +
+                returnVerticalSegments(array[5], array[1]) +
+                returnHorizontalSegments(array[6]) +
+                returnVerticalSegments(array[4], array[2]) +
                 returnHorizontalSegments(array[3]);
     }
 
@@ -103,10 +103,10 @@ public class SevenSegment {
 //    public static void main(String[] args) {
 //        SevenSegment segment = new SevenSegment();
 //
-//        String mySegment = "11111111";
+//        String mySegment = "11001001";
 //
 //        System.out.println(segment.displaySevenSegment(mySegment));
-//        System.out.println();
-//        System.out.println(segment.displaySevenSegment("11001111"));
+////        System.out.println();
+////        System.out.println(segment.displaySevenSegment("11001101"));
 //    }
 }

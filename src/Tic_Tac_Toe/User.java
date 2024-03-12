@@ -32,9 +32,6 @@ public class User {
 //        return nickName;
 //    }
 
-    public void playGame(TicTacToe myTicTacToe, int row, int column){
-        myTicTacToe.makeMove(row, column);
-    }
 
 
 
