@@ -28,23 +28,23 @@ public class TicTacToeApp {
         print("Welcome To GameByBe_Jay\n");
         print("The next page Displays, Shows And Help You With Your Choice ?\n");
     }
-
     public static void displayBoard(GameType[][] scoreBoard) {
-        JFrame frame = new JFrame("Tic-Tac-Toe Board");
-        JPanel panel = new JPanel(new GridLayout(3, 3));
-
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
-                JLabel label = new JLabel(scoreBoard[row][column].toString());
-                label.setHorizontalAlignment(JLabel.CENTER);
-                label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                panel.add(label);
+                System.out.print(" " + scoreBoard[row][column].toString() + " ");
+                if (column < 2) {
+                    System.out.print("|");
+
+                }
+            }
+            System.out.println();
+            if (row < 2) {
+                System.out.println("---------------------");
+
             }
         }
-
-        frame.add(panel);
-        frame.pack();
-        frame.setVisible(true);
+        System.out.println();
+        System.out.println("=============");
     }
 
     public static void mainApp() {
