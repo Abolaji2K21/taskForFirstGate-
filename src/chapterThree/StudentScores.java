@@ -119,8 +119,8 @@ public class StudentScores {
             int highestScorerIndex = 0;
             int lowestScorerIndex = 0;
 
-            int passes = 0;
-            int failures = 0;
+//            int passes = 0;
+//            int failures = 0;
 
             for (int studentIndex = 0; studentIndex < numOfStudent; studentIndex++) {
                 double currentScore = studentScores[studentIndex][subjectIndex];
@@ -265,4 +265,3 @@ public class StudentScores {
         return total;
     }
 }
-
