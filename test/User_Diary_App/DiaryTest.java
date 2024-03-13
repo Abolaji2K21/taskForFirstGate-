@@ -26,6 +26,7 @@ class DiaryTest {
         assertThrows(IllegalArgumentException.class, () -> new Diary(null, "password"));
     }
 
+
     @Test
     void testThatICantCreatADiaryWithOutAPassword() {
         assertThrows(IllegalArgumentException.class, () -> new Diary("Bee jay", null));
