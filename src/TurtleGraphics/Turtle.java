@@ -51,11 +51,21 @@ public class Turtle {
         int[][] floorBoard = sketchBoard.getBoard();
 
         switch (currentDirection) {
-            case EAST -> markEastWard(floorBoard, numberOfSteps);
-            case SOUTH -> markSouthWard(floorBoard, numberOfSteps);
-            case WEST -> markWestWard(floorBoard, numberOfSteps);
+            case EAST:
+                markEastWard(floorBoard, numberOfSteps);
+                break;
+            case SOUTH:
+                markSouthWard(floorBoard, numberOfSteps);
+                break;
+            case WEST:
+                markWestWard(floorBoard, numberOfSteps);
+                break;
+            case NORTH:
+                markNorthWard(floorBoard, numberOfSteps);
+                break;
         }
     }
+
 
     private void moveForwardViaNorth(int numberOfStep) {
         int newRow = numberOfStep - currentPosition.getRow() - 1 ;

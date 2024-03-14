@@ -123,74 +123,155 @@ public class TurtleTest {
 
 
     @Test
-    void testThatTurtleInitialPositionIsZeroAtRowAndZeroAtColumnWhenTurtleLocationIsEast(){
+    void testThatTurtleInitialPositionIsZeroAtRowAndZeroAtColumnWhenTurtleLocationIsEast() {
         assertSame(EAST, turtle.getCurrentDirection());
-        assertEquals(new TurtlePosition(0,0), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(0, 0), turtle.getCurrentPosition());
     }
 
     @Test
-    void testThatTurtleCanMoveWhenTurtleLocationIsEast(){
+    void testThatTurtleCanMoveWhenTurtleLocationIsEast() {
         assertSame(EAST, turtle.getCurrentDirection());
-        assertEquals(new TurtlePosition(0,0), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(0, 0), turtle.getCurrentPosition());
 
         turtle.moveForward(5, sketchBoard);
-        assertEquals(new TurtlePosition(0,4), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(0, 4), turtle.getCurrentPosition());
 
     }
 
     @Test
-    void testThatTurtleCanMoveWhenTurtleLocationIsSouthWhenTurtleCurrentPositionIsZeroAndFour(){
+    void testThatTurtleCanMoveWhenTurtleLocationIsSouthWhenTurtleCurrentPositionIsZeroAndFour() {
         turtle.moveForward(5, sketchBoard);
-        assertEquals(new TurtlePosition(0,4), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(0, 4), turtle.getCurrentPosition());
         turtle.turnRight();
         assertSame(SOUTH, turtle.getCurrentDirection());
         turtle.moveForward(5, sketchBoard);
-        assertEquals(new TurtlePosition(4,4), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(4, 4), turtle.getCurrentPosition());
 
     }
 
     @Test
-    void testThatTurtleCanMoveWhenTurtleLocationIsWestAndTurtleCurrentPositionIsFourAndFour(){
+    void testThatTurtleCanMoveWhenTurtleLocationIsWestAndTurtleCurrentPositionIsFourAndFour() {
         assertSame(EAST, turtle.getCurrentDirection());
-        assertEquals(new TurtlePosition(0,0), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(0, 0), turtle.getCurrentPosition());
         turtle.moveForward(5, sketchBoard);
-        assertEquals(new TurtlePosition(0,4), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(0, 4), turtle.getCurrentPosition());
         turtle.turnRight();
         assertSame(SOUTH, turtle.getCurrentDirection());
         turtle.moveForward(5, sketchBoard);
-        assertEquals(new TurtlePosition(4,4), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(4, 4), turtle.getCurrentPosition());
         turtle.turnRight();
         assertSame(WEST, turtle.getCurrentDirection());
         turtle.moveForward(5, sketchBoard);
-        assertEquals(new TurtlePosition(4,0), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(4, 0), turtle.getCurrentPosition());
 
     }
 
     @Test
-    void testThatTurtleCanMoveWhenTurtleLocationIsNorthAndTurtleCurrentPositionFourAndZero(){
+    void testThatTurtleCanMoveWhenTurtleLocationIsNorthAndTurtleCurrentPositionFourAndZero() {
         assertSame(EAST, turtle.getCurrentDirection());
-        assertEquals(new TurtlePosition(0,0), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(0, 0), turtle.getCurrentPosition());
         turtle.moveForward(5, sketchBoard);
-        assertEquals(new TurtlePosition(0,4), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(0, 4), turtle.getCurrentPosition());
         turtle.turnRight();
         assertSame(SOUTH, turtle.getCurrentDirection());
         turtle.moveForward(5, sketchBoard);
-        assertEquals(new TurtlePosition(4,4), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(4, 4), turtle.getCurrentPosition());
         turtle.turnRight();
         assertSame(WEST, turtle.getCurrentDirection());
         turtle.moveForward(5, sketchBoard);
-        assertEquals(new TurtlePosition(4,0), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(4, 0), turtle.getCurrentPosition());
         turtle.turnRight();
         assertSame(NORTH, turtle.getCurrentDirection());
         turtle.moveForward(5, sketchBoard);
-        assertEquals(new TurtlePosition(0,0), turtle.getCurrentPosition());
+        assertEquals(new TurtlePosition(0, 0), turtle.getCurrentPosition());
 
     }
 
     @Test
-    public void sketchBoardHasSize20by20(){
+    public void sketchBoardHasSize20by20() {
         int[][] expected = new int[20][20];
         assertArrayEquals(expected, sketchBoard.getBoard());
     }
+
+    @Test
+    public void penIsUp_turtleMoveTenTimes_scoreBoardNotMarked() {
+        assertTrue(turtle.isPenUp());
+        assertEquals(EAST, turtle.getCurrentDirection());
+        turtle.moveForward(5, sketchBoard);
+        assertEquals(new TurtlePosition(0, 4), turtle.getCurrentPosition());
+        int[][] expected = sketchBoard.getBoard();
+        assertEquals(0, expected[0][0]);
+        assertEquals(0, expected[0][1]);
+        assertEquals(0, expected[0][2]);
+        assertEquals(0, expected[0][3]);
+        assertEquals(0, expected[0][4]);
+        assertEquals(0, expected[0][5]);
+        assertEquals(0, expected[0][6]);
+        assertEquals(0, expected[0][7]);
+        assertEquals(0, expected[0][8]);
+        assertEquals(0, expected[0][9]);
+
+    }
+
+
+    @Test
+    public void penIsDown_turtleMoveFiveTimesViaEast_scoreBoardIsMarked(){
+        assertTrue(turtle.isPenUp());
+        turtle.penDown();
+        assertFalse(turtle.isPenUp());
+        assertEquals(EAST, turtle.getCurrentDirection());
+        turtle.moveForward(5, sketchBoard);
+        assertEquals(new TurtlePosition(0,4), turtle.getCurrentPosition());
+        int[][] expected = sketchBoard.getBoard();
+        assertEquals(1, expected[0][0]);
+        assertEquals(1, expected[0][1]);
+        assertEquals(1, expected[0][2]);
+        assertEquals(1, expected[0][3]);
+        assertEquals(1, expected[0][4]);
+    }
+
+
+    @Test
+    public void penIsDown_turtleMoveFiveTimesViaSouth_scoreBoardIsMarked(){
+        assertTrue(turtle.isPenUp());
+        turtle.penDown();
+        assertFalse(turtle.isPenUp());
+        assertEquals(EAST, turtle.getCurrentDirection());
+        turtle.moveForward(5, sketchBoard);
+        turtle.turnRight();
+        assertEquals(SOUTH, turtle.getCurrentDirection());
+        turtle.moveForward(5, sketchBoard);
+        assertEquals(new TurtlePosition(4,4), turtle.getCurrentPosition());
+        int[][] expected = sketchBoard.getBoard();
+        assertEquals(1, expected[0][4]);
+        assertEquals(1, expected[1][4]);
+        assertEquals(1, expected[2][4]);
+        assertEquals(1, expected[3][4]);
+        assertEquals(1, expected[4][4]);
+    }
+
+    @Test
+    public void penIsDown_turtleMovetwoTimesViaWest_scoreBoardIsMarked(){
+        assertTrue(turtle.isPenUp());
+        turtle.penDown();
+        assertFalse(turtle.isPenUp());
+        assertEquals(EAST, turtle.getCurrentDirection());
+        turtle.moveForward(2, sketchBoard);
+        turtle.turnRight();
+        assertEquals(SOUTH, turtle.getCurrentDirection());
+        turtle.moveForward(2, sketchBoard);
+        turtle.turnRight();
+        assertEquals(WEST, turtle.getCurrentDirection());
+        turtle.moveForward(2, sketchBoard);
+
+        assertEquals(new TurtlePosition(2,0), turtle.getCurrentPosition());
+        int[][] expected = sketchBoard.getBoard();
+        assertEquals(1, expected[2][1]);
+        assertEquals(1, expected[2][1]);
+    }
+
+
+
+
 
 }

@@ -1,3 +1,4 @@
+
 package TurtleGraphics;
 
 import java.util.InputMismatchException;
@@ -8,8 +9,8 @@ public class TurtlePosition {
     private int column;
 
     public TurtlePosition(int row, int column) {
-            this.row = row;
-            this.column = column;
+        this.row = row;
+        this.column = column;
     }
 
     @Override
