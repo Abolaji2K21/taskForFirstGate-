@@ -35,6 +35,26 @@ public class ArrayMinMaxSumTest {
         int[] array = {};
         assertThrows(NoSuchElementException.class, ()->ArrayMinMaxSum.getMinMaxSum(array));
     }
+    @Test
+    public void testGetMinMaxSum_AllSamePositiveValues() {
+        int[] array = {5, 5, 5, 5, 5};
+        int[] expected = {25, 20, 20};
+        assertArrayEquals(expected, ArrayMinMaxSum.getMinMaxSum(array));
+    }
+
+    @Test
+    public void testGetMinMaxSum_AllSameNegativeValues() {
+        int[] array = {-5, -5, -5, -5, -5};
+        int[] expected = {-25, -20, -20};
+        assertArrayEquals(expected, ArrayMinMaxSum.getMinMaxSum(array));
+    }
+
+    @Test
+    public void testGetMinMaxSum_OneElementArray() {
+        int[] array = {100};
+        int[] expected = {100, 0, 0};
+        assertArrayEquals(expected, ArrayMinMaxSum.getMinMaxSum(array));
+    }
 
 
 }
