@@ -4,6 +4,8 @@ import static TurtleGraphics.Direction.*;
 
 public class Turtle {
     private boolean isPenUp = true;
+
+    private TurtlePosition currentPosition = new TurtlePosition(0, 0);;
     private Direction currentDirection = EAST;
 
     public boolean isPenUp() {
@@ -28,5 +30,23 @@ public class Turtle {
 
     public void turnRight() {
         currentDirection = currentDirection.turnRight();
+    }
+
+    public TurtlePosition getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public void moveForward(int numberOfStep) {
+        switch (currentDirection){
+            case EAST -> moveForwardViaEast(numberOfStep);
+
+        }
+    }
+
+    private void moveForwardViaEast(int numberOfSteps) {
+        int newRow = currentPosition.getRow() ;
+        int newColumn = currentPosition.getColumn() + numberOfSteps - 1;
+        currentPosition = new TurtlePosition(newRow, newColumn);
+
     }
 }

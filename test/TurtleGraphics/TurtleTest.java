@@ -119,4 +119,19 @@ public class TurtleTest {
     }
 
 
+    @Test
+    void testThatTurtleInitialPositionIsZeroAtRowAndZeroAtColumnWhenTurtleLocationIsEast(){
+        assertSame(EAST, turtle.getCurrentDirection());
+        assertEquals(new TurtlePosition(0,0), turtle.getCurrentPosition());
+    }
+
+    @Test
+    void testThatTurtleCanMoveWhenTurtleLocationIsEast(){
+        assertSame(EAST, turtle.getCurrentDirection());
+        assertEquals(new TurtlePosition(0,0), turtle.getCurrentPosition());
+
+        turtle.moveForward(5);
+        assertEquals(new TurtlePosition(0,4), turtle.getCurrentPosition());
+
+    }
 }
