@@ -187,5 +187,10 @@ public class TurtleTest {
 
     }
 
+    @Test
+    public void sketchBoardHasSize20by20(){
+        int[][] expected = new int[20][20];
+        assertArrayEquals(expected, sketchBoard.getBoard());
+    }
 
 }

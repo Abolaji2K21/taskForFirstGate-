@@ -1,9 +1,10 @@
 package TurtleGraphics;
 
 public class SketchBoard {
-    private int[][] sketchboard = new int[20][20];
+    private int[][] sketchboard;
+
     public int[][] getBoard() {
-        return sketchboard;
+        return new int[20][20];
     }
 
     public void displayBoard() {
