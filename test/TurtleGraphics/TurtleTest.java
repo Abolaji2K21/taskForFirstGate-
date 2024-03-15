@@ -320,6 +320,7 @@ public class TurtleTest {
         turtle.turnRight();
         turtle.moveForward(20, sketchBoard);
         sketchBoard.displayBoard();
+        //done
     }
 
 
