@@ -312,13 +312,13 @@ public class TurtleTest {
     @Test
     public void turtleGraphicCanSquareWithHash(){
         turtle.penDown();
-        turtle.moveForward(5, sketchBoard);
+        turtle.moveForward(20, sketchBoard);
         turtle.turnRight();
-        turtle.moveForward(5, sketchBoard);
+        turtle.moveForward(20, sketchBoard);
         turtle.turnRight();
-        turtle.moveForward(5, sketchBoard);
+        turtle.moveForward(20, sketchBoard);
         turtle.turnRight();
-        turtle.moveForward(5, sketchBoard);
+        turtle.moveForward(20, sketchBoard);
         sketchBoard.displayBoard();
     }
 
