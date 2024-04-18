@@ -7,4 +7,7 @@ public class TaskThree {
                 System.out.println("Number # " + (check ));
         }
     }
+
+
+
 }
