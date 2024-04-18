@@ -47,4 +47,6 @@ public class LowestCommonNumberTest {
         int result = LowestCommonNumber.Lcm(array);
         assertEquals(2, result);
     }
+
+//    @Test
 }
