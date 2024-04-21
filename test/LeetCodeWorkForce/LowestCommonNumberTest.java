@@ -61,4 +61,34 @@ public class LowestCommonNumberTest {
         int result = LowestCommonNumber.maximumProductUsingForLoop(array);
         assertEquals(-4, result);
     }
+
+    @Test
+    public void testThatZeroIsMyLastIndex(){
+        int[] prototype = {0,0,0,1,2,4,4,2};
+        int[] result = {1,2,4,4,2,0,0,0};
+        assertArrayEquals(result, LowestCommonNumber.returnAllZeroToTheLast(prototype));
+    }
+
+    @Test
+    public void testThatZeroIsMyLastIndexEmpty(){
+        int[] prototype = {};
+        int[] result = {};
+        assertArrayEquals(result, LowestCommonNumber.returnAllZeroToTheLast(prototype));
+    }
+
+    @Test
+    public void testThatZeroIsMyLastIndexZeroAllThrough(){
+        int[] prototype = {0,0,0,0,0,0,0};
+        int[] result = {0,0,0,0,0,0,0};
+        assertArrayEquals(result, LowestCommonNumber.returnAllZeroToTheLast(prototype));
+    }
+
+    @Test
+    public void testThatZeroIsMyLastIndexZeroWithNegative(){
+        int[] prototype = {-1,-2,-3,-4,-5,-5,-6};
+        int[] result = null;
+        assertArrayEquals(null, LowestCommonNumber.returnAllZeroToTheLast(prototype));
+    }
+
 }
+
