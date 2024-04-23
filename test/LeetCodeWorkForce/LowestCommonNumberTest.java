@@ -48,18 +48,18 @@ public class LowestCommonNumberTest {
         assertEquals(2, result);
     }
 
-//    @Test
-//    public void testGetMaximumProduct(){
-//        int[] array = {-2,-7,-9,-10};
-//        int result = LowestCommonNumber.maximumProduct(array);
-//        assertEquals(14, result);
-//    }
+    @Test
+    public void testGetMaximumProduct(){
+        int[] array = {-2,-7,-9,-10};
+        int result = LowestCommonNumber.maximumProduct(array);
+        assertEquals(90, result);
+    }
 
     @Test
     public void testGetMaximumProductWithAnother(){
         int[] array = {-9, 9, 6, 4, -20, 11};
         int result = LowestCommonNumber.maximumProductUsingForLoop(array);
-        assertEquals(-4, result);
+        assertEquals(180, result);
     }
 
     @Test

@@ -30,8 +30,13 @@ public class LowestCommonNumber {
             return -1;
         } else {
             Arrays.sort(array);
-            return array[array.length - 1] * array[array.length - 2];
+            return Math.max(array[0] * array[1], array[array.length - 1] * array[array.length - 2]);
         }
+    }
+
+    public static int minimumProduct(int[] array){
+        Arrays.sort(array);
+        return Math.min(array[0]* array[1], array[array.length -1 ] * array[array.length -2]);
     }
 
     public static int maximumProductUsingForLoop(int[] array) {
