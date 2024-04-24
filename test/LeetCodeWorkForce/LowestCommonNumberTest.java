@@ -72,7 +72,7 @@ public class LowestCommonNumberTest {
     @Test
     public void testThatZeroIsMyLastIndexEmpty(){
         int[] prototype = {};
-        int[] result = {};
+        int[] result = null;
         assertArrayEquals(result, LowestCommonNumber.returnAllZeroToTheLast(prototype));
     }
 
@@ -90,5 +90,26 @@ public class LowestCommonNumberTest {
         assertArrayEquals(null, LowestCommonNumber.returnAllZeroToTheLast(prototype));
     }
 
+    @Test
+    public void testThatOneCanBeAddedToTheLastIndex(){
+        int[] prototype = {5, 2, 3, 1, 0};
+        int[] result = {5, 2, 3, 1, 1};
+        assertArrayEquals(result, LowestCommonNumber.returnAllArraysAndAddOneToTheLastIndex(prototype));
+    }
+
+    @Test
+    public void testThatOneCanBeAddedToTheLastIndexIs9(){
+        int[] prototype = {9, 3, 4, 0, 10};
+        int[] result = {9, 3, 4, 1, 0};
+        assertArrayEquals(result, LowestCommonNumber.returnAllArraysAndAddOneToTheLastIndex(prototype));
+    }
+
+    @Test
+    public void testThatOneCanBeAddedIfAllIndexIs9999LessOrMore(){
+        int[] prototype = {9, 8, 9, 9, 9};
+        int[] result = {9, 9, 0, 0, 0};
+        assertArrayEquals(result, LowestCommonNumber.returnAllArraysAndAddOneToTheLastIndex(prototype));
+
+    }
 }
 

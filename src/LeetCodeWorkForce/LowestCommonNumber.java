@@ -88,10 +88,20 @@ public class LowestCommonNumber {
         }
         return array;
     }
+
+public static int[] returnAllArraysAndAddOneToTheLastIndex(int[] array) {
+        for (int index = array.length - 1; index >= 0; index--) {
+            if (array[index] < 9) {
+
+                array[index]++;
+                return array;
+            } else {
+                array[index] = 0;
+            }
+        }
+        int[] newNumbers = new int[array.length + 1];
+        newNumbers[0] = 1;
+        return newNumbers;
+    }
+
 }
-
-
-
-
-
-

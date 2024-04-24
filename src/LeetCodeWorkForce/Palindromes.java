@@ -21,9 +21,11 @@ public class Palindromes {
 
             if (character != ' ') {
                 currentWord = currentWord + character;
+                System.out.println(currentWord);
 
             } else {
                 reverseSentence = currentWord + " " + reverseSentence;
+                System.out.println(reverseSentence);
                 currentWord = "";
             }
 
