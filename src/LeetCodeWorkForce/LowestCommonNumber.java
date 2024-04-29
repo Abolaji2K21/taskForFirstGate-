@@ -3,6 +3,8 @@ package LeetCodeWorkForce;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+import static java.lang.Integer.sum;
+
 public class LowestCommonNumber {
 
     public static int Lcm(int[] array) {
@@ -92,7 +94,6 @@ public class LowestCommonNumber {
 public static int[] returnAllArraysAndAddOneToTheLastIndex(int[] array) {
         for (int index = array.length - 1; index >= 0; index--) {
             if (array[index] < 9) {
-
                 array[index]++;
                 return array;
             } else {
@@ -103,5 +104,24 @@ public static int[] returnAllArraysAndAddOneToTheLastIndex(int[] array) {
         newNumbers[0] = 1;
         return newNumbers;
     }
+
+public static int sumTwoNumbers(int first , int second){
+        return sum(first,second);
+}
+
+public static int sumTwoNumber(int first, int second) {
+        while (second != 0) {
+            first++;
+            second--;
+        }
+        return first;
+    }
+
+public static int sumTwoNumberAgain(int first, int second){
+        return first - (- second);
+}
+
+
+
 
 }

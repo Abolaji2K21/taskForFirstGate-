@@ -111,5 +111,28 @@ public class LowestCommonNumberTest {
         assertArrayEquals(result, LowestCommonNumber.returnAllArraysAndAddOneToTheLastIndex(prototype));
 
     }
+
+    @Test
+    public void testThatTwoNumberCanBeAddedWithOutThePlusOperator(){
+        int first = 0;
+        int second = -7;
+        int result = -7;
+        assertEquals(result , LowestCommonNumber.sumTwoNumber(first,second));
+    }
+    @Test
+    public void testThatTwoNumberCanBeAddedWithOutThePlusOperatorOkay(){
+        int first = 0;
+        int second = -7;
+        int result = -7;
+        assertEquals(result , LowestCommonNumber.sumTwoNumbers(first,second));
+    }
+
+    @Test
+    public void testThatTwoNumberAgain(){
+        int first = 0;
+        int second = -7;
+        int result = -7;
+        assertEquals(result , LowestCommonNumber.sumTwoNumberAgain(first,second));
+    }
 }
 
