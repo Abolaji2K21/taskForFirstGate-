@@ -1,9 +1,19 @@
 package Chapter15;
 
-public class Person {
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+public class Person {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
+    @JsonProperty("DOB")
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private String dateOfBirth;
+
+
+
 
     public String getDateOfBirth() {
         return dateOfBirth;
@@ -40,4 +50,7 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
+
+
+
 }

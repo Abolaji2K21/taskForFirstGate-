@@ -9,4 +9,11 @@ public class JsonSerialization {
         return mapper.writeValueAsString(person);
 
     }
+
+    public static Person deserialize(String json) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(json, Person.class);
+    }
+
+
 }
