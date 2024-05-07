@@ -2,25 +2,26 @@ package ChapterEight;
 
 import java.util.Arrays;
 
-import static java.lang.Long.sum;
-
 public class HugeInteger {
     private  int[] digits;
+    private String output;
+    private boolean isLeadingZero;
 
 
 
     public HugeInteger(String number) {
+        if((number.length() > 41 && number.charAt(0)!='-')){
+            throw new HugeIntegerMotherException("Invalid Length size");
+        }
         if (!number.matches("-?\\d+")) {
             throw new HugeIntegerMotherException("Invalid input");
-        }
-
-        if((number.length() > 40)){
-            throw new HugeIntegerMotherException("Invalid Length size");
         }
         if (number.isEmpty()) {
             throw new HugeIntegerMotherException("Input cannot be empty");
         }
-        myParse(number);
+        isLeadingZero = number.charAt(0)=='-';
+
+            myParse(number);
 
 
     }
@@ -36,7 +37,7 @@ public class HugeInteger {
         }
     }
     public HugeInteger add(HugeInteger other) {
-        HugeInteger result = new HugeInteger("");
+        HugeInteger result = new HugeInteger("0");
 
         int carry = 0;
         for (int count = digits.length - 1; count >= 0; count--) {
@@ -91,14 +92,17 @@ public class HugeInteger {
             }
         }
 
-        if (sb.length() == 0) {
+        if (sb.isEmpty()) {
             sb.append(0);
         }
 
         if (isNegative) {
             sb.insert(0, '-');
         }
-
+        if(isLeadingZero && validatethroughZeroes(sb.toString())){
+            return "0";
+        }
+        if(isLeadingZero)return "-" + sb;
         return sb.toString();
     }
 
@@ -139,7 +143,15 @@ public class HugeInteger {
     public boolean isLessThanOrEqualTo(HugeInteger other) {
         return isLessThan(other) || isEqualTo(other);
     }
-
+    private boolean validatethroughZeroes(String values ){
+        if(values.charAt(0)== '-')values =values.replace('-','0');
+        for(char value : values.toCharArray()) {
+            if (value != '0') {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }
 
