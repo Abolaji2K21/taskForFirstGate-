@@ -1,5 +1,6 @@
 package LeetCodeWorkForce;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,6 +14,6 @@ public class codeWarQuestionTest {
         int y = 2;
         int result = 2;
 
-        assertEquals(result, codeWarQuestion.returnMinimumAbsValue(array,x,y));
+        Assertions.assertEquals(result, codeWarQuestion.returnMinimumAbsValue(array,x,y));
     }
 }

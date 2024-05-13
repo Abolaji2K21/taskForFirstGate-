@@ -1,0 +1,25 @@
+ [{
+  "name": "Penis",
+  "id": 2,
+  "amount": 2000,
+  "type": "DEBIT",
+  "date": "2024-05-13"
+},
+  {
+    "name": "PenisDown",
+    "id": 3,
+    "amount": 3000,
+    "type": "DEBIT",
+    "date": "2024-10-05"
+  },
+  {
+    "name": "PenIsUp",
+    "id": 1,
+    "amount": 5000,
+    "type": "DEBIT",
+    "date": "2024-05-13"
+  }
+
+
+
+]
