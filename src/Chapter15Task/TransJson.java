@@ -40,23 +40,17 @@ public class TransJson {
     }
 
 
-    public static int countSentenceWhenYouSeeDot(String jsonFile) throws IOException{
-        BufferedReader content = new BufferedReader(new FileReader(jsonFile));
-        String Content = content.readLine();
-        int sum = 0;
-        for(int count = 0; count < Content.length(); count++ ){
-            if(String.valueOf(Content.charAt(count)).equals(".")) {
-                sum++;
+    public static int countSentenceWhenYouSeeDot(String jsonFile) throws IOException {
+            BufferedReader content = new BufferedReader(new FileReader(jsonFile));
+            String Content = content.readLine();
+            int sum = 0;
+            for (int count = 0; count < Content.length(); count++) {
+                if (Content.indexOf('.', count) == count) {
+                    sum++;
+                }
             }
-            if(String.valueOf(Content.charAt(count)).equals(" .")) {
-                sum++;
-            }
-            if(String.valueOf(Content.charAt(count)).equals(" . ")) {
-                sum++;
-            }
+            return sum;
         }
-        return sum;
-    }
 
 
 
