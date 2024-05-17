@@ -21,6 +21,16 @@ public class ExampleOne {
             System.out.println(transaction.getAmount());
             System.out.println(transaction.getAccountNumber());
         });
+        Stream<Transactions> transactionStreamOne = Stream.of(
+                new Transactions("$1000", "1234"),
+                new Transactions("$10000", "12345"));
+        transactionStreamOne.forEach((transaction) -> System.out.printf("account with id %s in it\n," +
+                        transaction.getAmount(),
+                transaction.getAmount()));
+        Stream<Integer> integerStreamOne = Stream.generate(() -> new SecureRandom().nextInt()).limit(4);
+        integerStreamOne.forEach(System.out::println);
+
+
         Stream<Integer> integerStream = Stream.generate(() -> new SecureRandom().nextInt()).limit(4);
         integerStream.forEach(System.out::println);}
 
