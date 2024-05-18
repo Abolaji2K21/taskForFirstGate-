@@ -10,6 +10,5 @@ public class DoublePredicateSample {
         double sampleValue = 3.0;
         boolean result = doublePredicate.test(sampleValue);
         System.out.println(result);
-
     }
 }
