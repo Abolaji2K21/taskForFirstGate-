@@ -12,5 +12,5 @@ public class SupplierSample {
         System.out.println(supplier.get());
         Stream.generate(supplier).forEach( x-> System.out.println(x));
     }
-    Supplier<Transactions> transactionsSupplier = () -> new Transactions();
+//    Supplier<Transactions> transactionsSupplier = () -> new Transactions();
 }
