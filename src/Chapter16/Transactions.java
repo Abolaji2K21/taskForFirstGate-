@@ -1,6 +1,14 @@
 package Chapter16;
 
 public class Transactions {
+    @Override
+    public String toString() {
+        return "Transactions{" +
+                "amount='" + amount + '\'' +
+                ", accountNumber='" + accountNumber + '\'' +
+                '}';
+    }
+
     private String amount = "";
     private String accountNumber = "";
 
