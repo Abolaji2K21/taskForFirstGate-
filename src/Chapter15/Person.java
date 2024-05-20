@@ -15,13 +15,23 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 //@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Person {
-//    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public Person(String name, LocalDate dateOfBirth, String phoneNumber, Gender gender) {
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+    }
+
+    public Person(){};
+
+    //    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String name;
 //    @JsonInclude(JsonInclude.Include.NON_EMPTY)
 //        @JsonProperty("DOB")
 @JsonSerialize(using = LocalDateSerializer.class)
 @JsonDeserialize(using = LocalDateDeserializer.class)
 private LocalDate dateOfBirth;
+
 
 
 

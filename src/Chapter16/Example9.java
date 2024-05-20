@@ -38,6 +38,7 @@ public class Example9 {
         queue1.offer(50);
         queue1.offer(60);
         System.out.println(queue1);
+        queue1.poll();
 
         System.out.println(queue1.poll());
         System.out.println(queue1.poll());
@@ -45,5 +46,7 @@ public class Example9 {
         System.out.println(queue1.poll());
         System.out.println(queue1.poll());
         System.out.println(queue1.poll());
+        System.out.println(queue1.peek());
+
     }
 }
