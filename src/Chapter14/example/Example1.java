@@ -7,8 +7,6 @@ public class Example1 {
 
         String s2 = new String("john"); // Heap
 
-
-
-
+//done
     }
 }
