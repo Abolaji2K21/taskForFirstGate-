@@ -13,7 +13,7 @@ public class StreamOperations {
 
     public static Map<Integer, String> mapCodePointToCharacter(List<Integer> codePoint) {
         return codePoint.stream()
-                .collect(Collectors.toMap((number) ->number, Character:: toString));
+                .collect(Collectors.toMap((number) ->number, Character:: toString, (a,b)->a));
     }
 }
 
