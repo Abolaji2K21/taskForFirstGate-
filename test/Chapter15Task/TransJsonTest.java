@@ -104,4 +104,20 @@ class TransJsonTest {
         assertEquals(3333.33,expect);
 
     }
+
+    @Test
+    public void getAllTransaction() throws IOException {
+        String input = "C:\\Users\\DELL\\IdeaProjects\\taskforfirstgate\\src\\Chapter15Task\\TransactionOne.json";
+        List<Transaction> transactions = returnAllTransaction(input);
+        assertEquals(3, transactions.size());
+    }
+
+    @Test
+    public void getTransactionSummaryTest() throws IOException {
+        String input = "C:\\Users\\DELL\\IdeaProjects\\taskforfirstgate\\src\\Chapter15Task\\TransactionOne.json";
+        int transactionId = 2;
+        int result = 10000;
+        assertEquals(result,getTransactionSummary(input,transactionId).getBalance());
+
+    }
 }

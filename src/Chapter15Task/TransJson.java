@@ -64,6 +64,12 @@ public class TransJson {
 
     }
 
+    public static List<Transaction> returnAllTransaction(String json) throws IOException {
+        Path path = Paths.get(json);
+        String filContent = Files.readString(path);
+        Transaction[] transactions = deserialize(filContent);
+        return Arrays.stream(transactions).toList();
+    }
     public static List<Transaction>
     returnAllWithInRange(LocalDate startDate, LocalDate endDate, String json) throws IOException {
         Path path = Paths.get(json);
@@ -103,5 +109,13 @@ public class TransJson {
         return mapper.readValue(json, Transaction[].class);
     }
 
+   public static Account_Summary getTransactionSummary(String path, int transactionId) throws IOException {
+                   Account_Summary summary = new Account_Summary();
+                  var transactions = returnAllTransaction(path);
+                  summary.setBalance(transactions.stream().filter(transaction -> transaction.getId()==transactionId).mapToDouble(Transaction::getAmount).sum());
+                  summary.setNo_Of_Transaction((int) transactions.stream().filter(transaction -> transaction.getId()==transactionId).count());
+                  summary.setId(transactionId);
+                  return summary;
+   }
 
 }
