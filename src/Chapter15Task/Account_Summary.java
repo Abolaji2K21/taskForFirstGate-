@@ -7,6 +7,7 @@ public class Account_Summary{
                 ", balance=" + balance +
                 ", no_Of_Transaction=" + no_Of_Transaction +
                 '}';
+//
     }
     public int getId() {
         return id;
