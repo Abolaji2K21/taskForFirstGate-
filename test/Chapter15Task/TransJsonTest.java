@@ -14,8 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static Chapter15Task.TransJson.returnAll;
-import static Chapter15Task.TransJson.returnAllWithInRange;
+import static Chapter15Task.TransJson.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TransJsonTest {
@@ -91,6 +90,18 @@ class TransJsonTest {
         assertEquals("Penis", transactions.get(0).getName());
         assertEquals("PenisDown", transactions.get(1).getName());
 
+    }
+
+
+    @Test
+    public void getAverageOfAllTransactionWithInRange() throws IOException {
+        String input = "C:\\Users\\DELL\\IdeaProjects\\taskforfirstgate\\src\\Chapter15Task\\TransactionOne.json";
+        LocalDate startDate = LocalDate.of(2024, 05, 12);
+        LocalDate endDate = LocalDate.of(2024, 05, 19);
+
+        double result = returnTheAverageOfAllTransaction(startDate,endDate,input);
+        double expect =  Math.round(result * 100.0) / 100.0;
+        assertEquals(3333.33,expect);
 
     }
 }

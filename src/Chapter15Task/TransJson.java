@@ -84,6 +84,18 @@ public class TransJson {
 
     }
 
+    public static double returnTheAverageOfAllTransaction(LocalDate startDate, LocalDate endDate, String json) throws IOException {
+        Path path = Paths.get(json);
+        String filContent = Files.readString(path);
+        Transaction[] transactions = deserialize(filContent);
+
+        return Arrays.stream(transactions)
+                .filter(transaction -> transaction.getDate().compareTo(startDate) >= 0
+                        && transaction.getDate().compareTo(endDate) <= 0)
+                .mapToDouble(Transaction::getAmount).average().orElse(0.0);
+
+    }
+
     public static Transaction[] deserialize(String json) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(json, Transaction[].class);
