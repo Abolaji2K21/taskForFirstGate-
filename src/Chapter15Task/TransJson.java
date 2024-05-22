@@ -12,10 +12,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 public class TransJson {
     public static int getTotalTransaction(String jsonFilePath) throws IOException {
-
         Path path = Paths.get(jsonFilePath);
         String filContent = Files.readString(path);
         Transaction[] transactions = deserialize(filContent);
@@ -52,7 +54,35 @@ public class TransJson {
             return sum;
         }
 
+    public static List<Transaction> returnAll(LocalDate date, String json) throws IOException {
+        Path path = Paths.get(json);
+        String filContent = Files.readString(path);
+        Transaction[] transactions = deserialize(filContent);
 
+        return Arrays.stream(transactions).
+                filter(transaction -> transaction.getDate().equals(date)).toList();
+
+    }
+
+    public static List<Transaction>
+    returnAllWithInRange(LocalDate startDate, LocalDate endDate, String json) throws IOException {
+        Path path = Paths.get(json);
+        String filContent = Files.readString(path);
+        Transaction[] transactions = deserialize(filContent);
+
+        return Arrays.stream(transactions)
+                .filter(transaction -> transaction.getDate().compareTo(startDate) >= 0
+                        && transaction.getDate().compareTo(endDate) <= 0)
+                .toList();
+
+
+//        return Arrays.stream(transactions)
+//                .filter(transaction -> transaction.getDate().equals(startDate)
+//                        && transaction.getDate().equals(endDate))
+//                .toList();
+
+
+    }
 
     public static Transaction[] deserialize(String json) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();

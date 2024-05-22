@@ -41,4 +41,15 @@ public class StreamOperationsTest {
         );
         assertEquals(expected, mapPoint);
 }
+
+    @Test
+    public void testGetNumbersFormatted() {
+        List<Integer> number = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        String result = StreamOperations.getNumbersFormatted(number);
+        String expected = "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]";
+                assertNotNull(result);
+                assertTrue(result.startsWith("["));
+                assertTrue(result.endsWith("]"));
+                assertEquals(expected,result);
+    }
 }

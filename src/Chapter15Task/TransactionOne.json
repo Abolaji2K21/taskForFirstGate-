@@ -10,14 +10,14 @@
     "id": 3,
     "amount": 3000,
     "type": "DEBIT",
-    "date": "2024-10-05"
+    "date": "2024-05-15"
   },
   {
     "name": "PenIsUp",
     "id": 1,
     "amount": 5000,
     "type": "DEBIT",
-    "date": "2024-05-13"
+    "date": "2024-05-17"
   }
 
 

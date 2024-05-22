@@ -56,4 +56,15 @@ public class Transaction {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", amount=" + amount +
+                ", type=" + type +
+                ", date=" + date +
+                '}';
+    }
 }

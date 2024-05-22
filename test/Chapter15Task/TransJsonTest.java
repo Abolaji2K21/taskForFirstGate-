@@ -11,7 +11,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import static Chapter15Task.TransJson.returnAll;
+import static Chapter15Task.TransJson.returnAllWithInRange;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TransJsonTest {
@@ -41,24 +45,52 @@ class TransJsonTest {
 //    }
 
     @Test
-    public void calTransaction() throws IOException{
+    public void calTransaction() throws IOException {
         String input = "C:\\Users\\DELL\\IdeaProjects\\taskforfirstgate\\src\\Chapter15Task\\TransactionOne.json";
         int transactionTotal = 10000;
         assertEquals(transactionTotal, TransJson.getTotalTransaction(input));
     }
 
     @Test
-    public void countDigits() throws IOException{
+    public void countDigits() throws IOException {
         String input = "C:\\Users\\DELL\\Desktop\\CountText.txt";
         int result = 2;
         assertEquals(result, TransJson.countDigitInSentence(input));
     }
 
     @Test
-    public void countSentence() throws IOException{
+    public void countSentence() throws IOException {
         String input = "C:\\Users\\DELL\\Desktop\\CountText.txt";
         int result = 3;
         assertEquals(result, TransJson.countSentenceWhenYouSeeDot(input));
+
+    }
+
+    @Test
+    public void getAllTransactions() throws IOException {
+        String input = "C:\\Users\\DELL\\IdeaProjects\\taskforfirstgate\\src\\Chapter15Task\\TransactionOne.json";
+        LocalDate date = LocalDate.of(2024, 05, 13);
+        List<Transaction> transactions = returnAll(date,input);
+        assertEquals(2, transactions.size());
+        assertEquals("Penis", transactions.get(0).getName());
+        assertEquals("PenIsUp", transactions.get(1).getName());
+//        assertEquals("PenIsUp", transactions.get(2).getName());
+
+    }
+
+
+
+    @Test
+    public void getAllTransactionsWithInRange() throws IOException {
+        String input = "C:\\Users\\DELL\\IdeaProjects\\taskforfirstgate\\src\\Chapter15Task\\TransactionOne.json";
+        LocalDate startDate = LocalDate.of(2024, 05, 12);
+        LocalDate endDate = LocalDate.of(2024, 05, 19);
+
+        List<Transaction> transactions = returnAllWithInRange(startDate,endDate,input);
+        assertEquals(3, transactions.size());
+        assertEquals("Penis", transactions.get(0).getName());
+        assertEquals("PenisDown", transactions.get(1).getName());
+
 
     }
 }
