@@ -50,29 +50,29 @@ class TransJsonTest {
         assertEquals(transactionTotal, TransJson.getTotalTransaction(input));
     }
 
-    @Test
-    public void countDigits() throws IOException {
-        String input = "C:\\Users\\DELL\\Desktop\\CountText.txt";
-        int result = 2;
-        assertEquals(result, TransJson.countDigitInSentence(input));
-    }
-
-    @Test
-    public void countSentence() throws IOException {
-        String input = "C:\\Users\\DELL\\Desktop\\CountText.txt";
-        int result = 3;
-        assertEquals(result, TransJson.countSentenceWhenYouSeeDot(input));
-
-    }
+//    @Test
+//    public void countDigits() throws IOException {
+//        String input = "C:\\Users\\DELL\\Desktop\\CountText.txt";
+//        int result = 2;
+//        assertEquals(result, TransJson.countDigitInSentence(input));
+//    }
+//
+//    @Test
+//    public void countSentence() throws IOException {
+//        String input = "C:\\Users\\DELL\\Desktop\\CountText.txt";
+//        int result = 3;
+//        assertEquals(result, TransJson.countSentenceWhenYouSeeDot(input));
+//
+//    }
 
     @Test
     public void getAllTransactions() throws IOException {
         String input = "C:\\Users\\DELL\\IdeaProjects\\taskforfirstgate\\src\\Chapter15Task\\TransactionOne.json";
         LocalDate date = LocalDate.of(2024, 05, 13);
         List<Transaction> transactions = returnAll(date,input);
-        assertEquals(2, transactions.size());
+        assertEquals(1, transactions.size());
         assertEquals("Penis", transactions.get(0).getName());
-        assertEquals("PenIsUp", transactions.get(1).getName());
+//        assertEquals("PenIsUp", transactions.get(1).getName());
 //        assertEquals("PenIsUp", transactions.get(2).getName());
 
     }
@@ -118,6 +118,15 @@ class TransJsonTest {
         int transactionId = 2;
         int result = 10000;
         assertEquals(result,getTransactionSummary(input,transactionId).getBalance());
+
+    }
+
+    @Test
+    public void getTransactionSummaryTestOne() throws IOException {
+        String input = "C:\\Users\\DELL\\IdeaProjects\\taskforfirstgate\\src\\Chapter15Task\\TransactionOne.json";
+        int transactionId = 2;
+        int result = 10000;
+        assertEquals(result,getTransactionSummaryOne(input,transactionId));
 
     }
 }

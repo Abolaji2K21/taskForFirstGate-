@@ -110,7 +110,7 @@ public class TransJson {
     }
 
    public static Account_Summary getTransactionSummary(String path, int transactionId) throws IOException {
-                   Account_Summary summary = new Account_Summary();
+                  Account_Summary summary = new Account_Summary();
                   var transactions = returnAllTransaction(path);
                   summary.setBalance(transactions.stream().filter(transaction -> transaction.getId()==transactionId).mapToDouble(Transaction::getAmount).sum());
                   summary.setNo_Of_Transaction((int) transactions.stream().filter(transaction -> transaction.getId()==transactionId).count());
@@ -118,4 +118,11 @@ public class TransJson {
                   return summary;
    }
 
+    public static int getTransactionSummaryOne(String path,int transactionId ) throws IOException {
+        var transactions = returnAllTransaction(path);
+        return transactions.stream()
+                           .filter(transaction -> transaction.getId()==transactionId)
+                           .mapToInt(Transaction::getAmount).sum();
+
+    }
 }
