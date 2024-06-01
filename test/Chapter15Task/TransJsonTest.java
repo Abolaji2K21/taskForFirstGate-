@@ -1,18 +1,11 @@
 package Chapter15Task;
 
 
-import Chapter15.Gender;
-import Chapter15.JsonSerialization;
-import Chapter15.Person;
-import Chapter15Task.Transaction;
-import Chapter15Task.Type;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static Chapter15Task.TransJson.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -117,7 +110,7 @@ class TransJsonTest {
         String input = "C:\\Users\\DELL\\IdeaProjects\\taskforfirstgate\\src\\Chapter15Task\\TransactionOne.json";
         int transactionId = 2;
         int result = 10000;
-        assertEquals(result,getTransactionSummary(input,transactionId).getBalance());
+        assertEquals(result,getTransactionSummary(input,transactionId).getAmount());
 
     }
 
@@ -127,6 +120,8 @@ class TransJsonTest {
         int transactionId = 2;
         int result = 10000;
         assertEquals(result,getTransactionSummaryOne(input,transactionId));
+
+
 
     }
 }

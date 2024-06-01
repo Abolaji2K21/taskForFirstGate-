@@ -1,12 +1,9 @@
 package Chapter15Task;
 
-import Chapter15.Gender;
-import Chapter15.Person;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -112,7 +109,7 @@ public class TransJson {
    public static Account_Summary getTransactionSummary(String path, int transactionId) throws IOException {
                   Account_Summary summary = new Account_Summary();
                   var transactions = returnAllTransaction(path);
-                  summary.setBalance(transactions.stream().filter(transaction -> transaction.getId()==transactionId).mapToDouble(Transaction::getAmount).sum());
+                  summary.setAmount(transactions.stream().filter(transaction -> transaction.getId()==transactionId).mapToDouble(Transaction::getAmount).sum());
                   summary.setNo_Of_Transaction((int) transactions.stream().filter(transaction -> transaction.getId()==transactionId).count());
                   summary.setId(transactionId);
                   return summary;

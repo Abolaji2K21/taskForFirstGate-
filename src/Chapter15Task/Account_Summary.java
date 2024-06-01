@@ -4,7 +4,7 @@ public class Account_Summary{
     public String toString() {
         return "Account_Summary{" +
                 " id='" + id + '\'' +
-                ", balance=" + balance +
+                ", balance=" + amount +
                 ", no_Of_Transaction=" + no_Of_Transaction +
                 '}';
 //
@@ -15,11 +15,11 @@ public class Account_Summary{
     public void setId(int id) {
         this.id = id;
     }
-    public double getBalance() {
-        return balance;
+    public double getAmount() {
+        return amount;
     }
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
     public int getNo_Of_Transaction() {
         return no_Of_Transaction;
@@ -27,14 +27,14 @@ public class Account_Summary{
     public void setNo_Of_Transaction(int no_Of_Transaction) {
         this.no_Of_Transaction = no_Of_Transaction;
     }
-    public Account_Summary(int id , double balance, int no_Of_Transaction) {
+    public Account_Summary(int id , double amount, int no_Of_Transaction) {
         this.id = id;
-        this.balance = balance;
+        this.amount = amount;
         this.no_Of_Transaction = no_Of_Transaction;
     }
     public Account_Summary(){};
     private int id ;
-    private double balance;
+    private double amount;
     private int no_Of_Transaction;
 
 
