@@ -1,4 +1,4 @@
-package E_Store;
+package E_Store.models;
 
 public class Billing_Info {
     private String receiverPhone;

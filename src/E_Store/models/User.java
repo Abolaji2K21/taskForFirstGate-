@@ -1,4 +1,4 @@
-package E_Store;
+package E_Store.models;
 
 import java.util.InputMismatchException;
 

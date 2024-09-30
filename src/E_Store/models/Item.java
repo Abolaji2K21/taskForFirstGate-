@@ -1,4 +1,4 @@
-package E_Store;
+package E_Store.models;
 
 public class Item {
     private Product product;
